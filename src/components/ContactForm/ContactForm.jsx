@@ -1,10 +1,12 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
-import css from './FormAddContact.module.css';
+import PropTypes from 'prop-types';
 
-const { form, form_lable, btn_submit } = css;
+import css from './ContactForm.module.css';
 
-class FormAddContact extends Component {
+const { form, form_lable, btn_submit, input } = css;
+
+class ContactForm extends Component {
   state = {
     // contacts: [],
     name: '',
@@ -37,6 +39,7 @@ class FormAddContact extends Component {
         </label>
 
         <input
+          className={input}
           id={nameId}
           type="text"
           name="name"
@@ -52,6 +55,7 @@ class FormAddContact extends Component {
         </label>
 
         <input
+          className={input}
           id={numberId}
           type="tel"
           name="number"
@@ -70,4 +74,8 @@ class FormAddContact extends Component {
   }
 }
 
-export default FormAddContact;
+export default ContactForm;
+
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

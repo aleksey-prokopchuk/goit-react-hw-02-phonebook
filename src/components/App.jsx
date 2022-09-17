@@ -15,7 +15,7 @@ export const App = () => {
         color: '#010101',
       }}
     >
-      <Phonebook title="Phonebook" />
+      <Phonebook />
     </div>
   );
 };

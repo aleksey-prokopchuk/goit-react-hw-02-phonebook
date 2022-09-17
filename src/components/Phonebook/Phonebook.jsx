@@ -1,10 +1,12 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
 
-import FormAddContact from '../form/FormAddContact';
+import ContactForm from '../ContactForm/ContactForm';
 import ContactList from '../ContactList/ContactList';
-// import Filter from '../Filter/Filter';
-// import css from './Phonebook.module.css';
+import Filter from '../Filter/Filter';
+import css from './Phonebook.module.css';
+
+const { wrapper } = css;
 
 class Phonebook extends Component {
   state = {
@@ -17,7 +19,7 @@ class Phonebook extends Component {
     filter: '',
   };
 
-  isDuplicate({ name, number }) {
+  isDuplicate({ name /*, number*/ }) {
     const { contacts } = this.state;
     const result = contacts.find(
       item => item.name === name /*&& item.number === number*/
@@ -51,10 +53,6 @@ class Phonebook extends Component {
     });
   };
 
-  static defaultProps = {
-    title: Phonebook,
-  };
-
   getFilteredContacts() {
     const { contacts, filter } = this.state;
     if (!filter) {
@@ -77,20 +75,28 @@ class Phonebook extends Component {
     const { addContact, handleChange, removeContact } = this;
     const { filter } = this.state;
     const contacts = this.getFilteredContacts();
-    const { title } = this.props;
     return (
-      <div>
-        <h1>{title}</h1>
-        <FormAddContact onSubmit={addContact} />
-        <p>Find contacts by name</p>
-        {/* <Filter /> */}
-        <input
-          type="text"
-          name="filter"
-          onChange={handleChange}
+      <div className={wrapper}>
+        <h1
+          style={{
+            marginBottom: 15,
+          }}
+        >
+          Phonebook
+        </h1>
+        <ContactForm onSubmit={addContact} />
+        <h2
+          style={{
+            marginBottom: 15,
+          }}
+        >
+          Contacts
+        </h2>
+        <Filter
+          title="Find contacts by name"
           value={filter}
+          onChange={handleChange}
         />
-
         <ContactList items={contacts} removeContact={removeContact} />
       </div>
     );
