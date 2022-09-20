@@ -17,7 +17,6 @@ function ContactList({ items, removeContact }) {
       </li>
     );
   });
-  //   console.log(items);
   return (
     <div>
       <ul className={list}>{elements}</ul>

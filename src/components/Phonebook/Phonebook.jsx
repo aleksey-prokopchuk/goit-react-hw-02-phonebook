@@ -19,11 +19,9 @@ class Phonebook extends Component {
     filter: '',
   };
 
-  isDuplicate({ name /*, number*/ }) {
+  isDuplicate({ name }) {
     const { contacts } = this.state;
-    const result = contacts.find(
-      item => item.name === name /*&& item.number === number*/
-    );
+    const result = contacts.find(item => item.name === name);
     return result;
   }
 

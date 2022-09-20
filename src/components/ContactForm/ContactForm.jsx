@@ -8,7 +8,6 @@ const { form, form_lable, btn_submit, input } = css;
 
 class ContactForm extends Component {
   state = {
-    // contacts: [],
     name: '',
     number: '',
   };
@@ -19,14 +18,12 @@ class ContactForm extends Component {
   addContact = event => {
     event.preventDefault();
     const { name, number } = this.state;
-    // console.log(name, number);
     this.props.onSubmit({ name, number });
     this.setState({ name: '', number: '' });
   };
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
-    // console.log(event.target.value);
   };
 
   render() {
